@@ -11,7 +11,7 @@ const data = {'clubId': 3,'typeId':0,'resourceDetailId':149, 'sessionId':'91e696
 
 exports.handler = async (event, context) => {
 
-axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', data )
+return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', data )
 .then(res => {
     console.log(`statusCode: ${res.statusCode}`)
     const openSlots = res.data.d.filter( spot => ! spot.title.includes('4/4'))
