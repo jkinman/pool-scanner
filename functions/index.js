@@ -28,7 +28,7 @@ return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Vie
             )
     return {
         statusCode: 200,
-        body: openSlots
+        body: JSON.stringify(openSlots)
     }
     
   })
