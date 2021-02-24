@@ -21,14 +21,14 @@ return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Vie
     openSlots.map(data => 
         {
             if(! data.title.includes('4/4')){
-                console.log( {time:data.StartDateTime} )
-                // console.log( data )
+                // console.log( {time:data.StartDateTime} )
+                console.log( data )
             }
         }
             )
     return {
         statusCode: 200,
-        body: JSON.stringify(openSlots)
+        body: JSON.stringify(openSlots.map(slot => slot.StartDateTime))
     }
     
   })
