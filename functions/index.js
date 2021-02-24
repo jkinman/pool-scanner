@@ -39,9 +39,4 @@ axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/Onli
         body: error
         }
   })
-
-  return {
-    statusCode: 200,
-    body: "no data available"
-    }
 }
