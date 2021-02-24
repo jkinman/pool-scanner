@@ -18,11 +18,6 @@ axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/Onli
     openSlots.sort((a, b) => {
         return a.start > b.start ?  1 : -1
     } )
-    return {
-        statusCode: 200,
-        body: openSlots
-        }
-    
     openSlots.map(data => 
         {
             if(! data.title.includes('4/4')){
@@ -31,6 +26,11 @@ axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/Onli
             }
         }
             )
+    return {
+        statusCode: 200,
+        body: openSlots
+    }
+    
   })
   .catch(error => {
       console.error(error)
