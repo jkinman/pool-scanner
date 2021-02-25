@@ -8,13 +8,12 @@ function App() {
   React.useEffect(() => {
     axios.get('https://swim-scan.netlify.app/.netlify/functions/index')
     .then( res => {
-      console.log(res)
+      console.log('res', res)
       setOpenSlots(res.data)
     })
     .error( err => {
-      console.log(err)
+      console.log('error', err)
     })
-  
   }, [])
   return (
     <div className="App">
