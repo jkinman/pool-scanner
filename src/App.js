@@ -5,11 +5,17 @@ import axios from 'axios'
 function App() {
 
   const [openSlots, setOpenSlots] = React.useState([])
-  axios.get('https://swim-scan.netlify.app/.netlify/functions/index')
-  .then( res => {
-    debugger
-    setOpenSlots(res.data)
-  })
+  React.useEffect(() => {
+    axios.get('https://swim-scan.netlify.app/.netlify/functions/index')
+    .then( res => {
+      console.log(res)
+      setOpenSlots(res.data)
+    })
+    .error( err => {
+      console.log(err)
+    })
+  
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
