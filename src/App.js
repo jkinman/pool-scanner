@@ -16,10 +16,11 @@ function App() {
       console.log('error', err)
     })
   }, [])
+  
   return (
     <div>
       <ul>
-        {openSlots.map( slot => 
+        {openSlots.map( slot =>
         <li>{slot}</li>
         )}
       </ul>
