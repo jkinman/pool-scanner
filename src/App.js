@@ -5,6 +5,7 @@ import axios from 'axios'
 function App() {
 
   const [openSlots, setOpenSlots] = React.useState([])
+
   React.useEffect(() => {
     axios.get('https://swim-scan.netlify.app/.netlify/functions/index')
     .then( res => {
@@ -19,9 +20,11 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <div>
-        {openSlots.map( slot => JSON.stringify(slot))}
-      </div>
+      <ul>
+        {openSlots.map( slot => 
+        <li>{slot}</li>
+        )}
+      </ul>
     </div>
   );
 }
