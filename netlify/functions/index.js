@@ -1,23 +1,26 @@
+const express = require('express')
+const serverless = require('serverless-http')
+const app = express()
+const bodyParser = require('body-parser')
+const cors = require('cors')
+
 const https = require('https');
 const axios = require('axios')
 const moment = require('moment')
 
+app.use(cors())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
+// build the data
 const startDate = moment().subtract(0, 'day').toISOString()
 const endDate = moment().add(3, 'days').toISOString()
-
-
-const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
-  }
-
-// const data = {'clubId': 3,'typeId':0,'resourceDetailId':149, 'sessionId':'91e696f7-79b0-4ebf-be54-6f24686014eb', 'startDate':'2021-02-24T00:00:00.000Z', 'endDate':'2021-02-25T00:00:00.000Z' }
 const data = {'clubId': 3,'typeId':0,'resourceDetailId':149, 'sessionId':'91e696f7-79b0-4ebf-be54-6f24686014eb', startDate, endDate }
 
-exports.handler = async (event, context) => {
+app.get('/times', (req, res) => {
 
-return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', data, headers )
+return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', 
+data )
 .then(res => {
     console.log(`statusCode: ${res.statusCode}`)
     const openSlots = res.data.d.filter( spot => ! spot.title.includes('4/4'))
@@ -46,3 +49,5 @@ return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Vie
         }
   })
 }
+  
+module.exports.handler = serverless(app)
