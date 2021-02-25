@@ -5,13 +5,19 @@ const moment = require('moment')
 const startDate = moment().subtract(0, 'day').toISOString()
 const endDate = moment().add(2, 'days').toISOString()
 
+
+const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+  }
+
 // const data = {'clubId': 3,'typeId':0,'resourceDetailId':149, 'sessionId':'91e696f7-79b0-4ebf-be54-6f24686014eb', 'startDate':'2021-02-24T00:00:00.000Z', 'endDate':'2021-02-25T00:00:00.000Z' }
 const data = {'clubId': 3,'typeId':0,'resourceDetailId':149, 'sessionId':'91e696f7-79b0-4ebf-be54-6f24686014eb', startDate, endDate }
 
-
 exports.handler = async (event, context) => {
 
-return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', data )
+return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', data, headers )
 .then(res => {
     console.log(`statusCode: ${res.statusCode}`)
     const openSlots = res.data.d.filter( spot => ! spot.title.includes('4/4'))
