@@ -20,7 +20,7 @@
   # Directory with the serverless functions, including background functions,
   # to deploy to AWS. This is relative to the base directory if one has been set, 
   # or the root directory if a base has not been set.
-  functions = "netlifyfunctions/"
+  functions = "netlify/functions/"
 
 # A basic redirect rule
 #[[redirects]]
