@@ -11,7 +11,7 @@ function App() {
       console.log('res', res)
       setOpenSlots(res.data)
     })
-    .error( err => {
+    .catch( err => {
       console.log('error', err)
     })
   }, [])
