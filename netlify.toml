@@ -1,15 +1,7 @@
+# Settings in the [build] context are global and are applied to all contexts
+# unless otherwise overridden by more specific contexts.
 [[plugins]]
     package = "@netlify/plugin-functions-install-core"
-[build]
-  publish = "fe/build/"
-[[redirects]]
-  from = "/"
-  to = "/build"
-  status = 200
-
-
-  # Settings in the [build] context are global and are applied to all contexts
-# unless otherwise overridden by more specific contexts.
 [build]
   # Directory to change to before starting a build.
   # This is where we will look for package.json/.nvmrc/etc.
