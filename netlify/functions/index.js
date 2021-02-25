@@ -48,6 +48,6 @@ data )
         body: error
         }
   })
-}
+})
   
 module.exports.handler = serverless(app)
