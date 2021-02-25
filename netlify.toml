@@ -21,3 +21,10 @@
   # to deploy to AWS. This is relative to the base directory if one has been set, 
   # or the root directory if a base has not been set.
   functions = "netlify/functions/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin "*"
+    Access-Control-Allow-Headers "Content-Type"
+    Access-Control-Allow-Methods "GET, POST, PUT, DELETE"
