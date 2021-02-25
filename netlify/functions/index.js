@@ -3,7 +3,7 @@ const axios = require('axios')
 const moment = require('moment')
 
 const startDate = moment().subtract(0, 'day').toISOString()
-const endDate = moment().add(2, 'days').toISOString()
+const endDate = moment().add(3, 'days').toISOString()
 
 
 const headers = {

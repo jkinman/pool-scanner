@@ -16,12 +16,14 @@ function App() {
       console.log('error', err)
     })
   }, [])
-  
+
   return (
     <div>
+    <h1>YWCA Swim Scanner</h1>
+    <h5>open swimming slots in the next 3 days (joel.kinman@gmail.com)</h5>
       <ul>
         {openSlots.map( slot =>
-        <li>{slot}</li>
+        <li><a href="https://ywcavancouver.mosoportal.com/bookings.aspx">{slot}</a></li>
         )}
       </ul>
     </div>
