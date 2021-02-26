@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
     return axios.post( 'https://ywcavancouver.mosoportal.com/FunctionalTemplates/Views/OnlineSchedulerFunctions.asmx/GetAvailability', 
     data )
     .then(reponse => {
-        console.log(`statusCode: ${res.statusCode}`)
+        console.log(`statusCode: ${res}`)
         const openSlots = res.data.filter( spot => ! spot.title.includes('4/4'))
         openSlots.sort((a, b) => {
             return a.start > b.start ?  1 : -1
