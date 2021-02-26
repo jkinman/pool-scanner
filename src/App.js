@@ -7,7 +7,7 @@ function App() {
   const [openSlots, setOpenSlots] = React.useState([])
 
   React.useEffect(() => {
-    axios.get('https://swim-scan.netlify.app/.netlify/functions/index')
+    axios.get('https://swim-scan.netlify.app/.netlify/functions/times')
     .then( res => {
       console.log('res', res)
       setOpenSlots(res.data)
